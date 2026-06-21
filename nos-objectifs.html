@@ -7,10 +7,8 @@
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #f5f5f0; min-height: 100vh; color: #1a1a1a; }
-
   .app { max-width: 480px; margin: 0 auto; padding: 1rem; }
 
-  /* LOGIN */
   .login-wrap { display: flex; align-items: center; justify-content: center; min-height: 100vh; padding: 1rem; }
   .login-card { background: white; border-radius: 20px; padding: 2rem; width: 100%; max-width: 360px; box-shadow: 0 2px 20px rgba(0,0,0,.08); text-align: center; }
   .login-card h1 { font-size: 22px; font-weight: 600; margin-bottom: 6px; }
@@ -23,29 +21,24 @@
   .login-btn { width: 100%; padding: 12px; background: #1D9E75; color: white; border: none; border-radius: 12px; font-size: 15px; font-weight: 600; cursor: pointer; }
   .login-btn:hover { background: #0F6E56; }
 
-  /* TOPBAR */
   .topbar { display: flex; align-items: center; justify-content: space-between; padding: 1rem 0 .75rem; }
   .topbar-left { display: flex; align-items: center; gap: 10px; }
   .top-av { width: 38px; height: 38px; border-radius: 50%; background: #E1F5EE; border: 2px solid #5DCAA5; display: flex; align-items: center; justify-content: center; font-size: 20px; }
   .top-name { font-size: 16px; font-weight: 600; }
   .switch-btn { font-size: 12px; color: #888; background: white; border: 1px solid #e0e0e0; padding: 5px 10px; border-radius: 8px; cursor: pointer; }
 
-  /* TABS */
   .tabs { display: flex; background: #ebebeb; border-radius: 12px; padding: 3px; margin-bottom: 1.25rem; gap: 2px; }
   .tab { flex: 1; padding: 8px 4px; border: none; background: transparent; border-radius: 9px; font-size: 13px; font-weight: 500; color: #888; cursor: pointer; }
   .tab.active { background: white; color: #1a1a1a; box-shadow: 0 1px 4px rgba(0,0,0,.1); }
 
-  /* DATE NAV */
   .date-nav { display: flex; align-items: center; justify-content: space-between; margin-bottom: .75rem; }
   .date-lbl { font-size: 15px; font-weight: 600; }
   .nav-btn { background: white; border: 1px solid #e0e0e0; border-radius: 10px; padding: 6px 12px; cursor: pointer; font-size: 18px; color: #555; }
   .nav-btn:disabled { opacity: .3; cursor: default; }
 
-  /* PROGRESS */
   .prog-wrap { background: #e8e8e8; border-radius: 99px; height: 7px; margin-bottom: 1.25rem; overflow: hidden; }
   .prog-fill { height: 100%; background: #1D9E75; border-radius: 99px; transition: width .3s; }
 
-  /* COMPARE GRID */
   .compare-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 1rem; }
   .u-card { background: white; border-radius: 16px; padding: 12px; border: 2px solid transparent; }
   .u-card.mine { border-color: #5DCAA5; }
@@ -63,51 +56,58 @@
   .dot.g { background: #1D9E75; border-color: #1D9E75; }
   .dot.p { background: #7F77DD; border-color: #7F77DD; }
 
-  /* HABIT TOGGLE */
   .toggle-list { display: flex; flex-direction: column; gap: 8px; margin-bottom: 1rem; }
   .h-toggle { display: flex; align-items: center; gap: 12px; padding: 13px 14px; background: white; border-radius: 14px; cursor: pointer; border: 1.5px solid transparent; transition: border-color .15s, background .15s; }
   .h-toggle:active { transform: scale(.98); }
   .h-toggle.done { background: #E1F5EE; border-color: #5DCAA5; }
+  .h-toggle.perso { background: white; }
+  .h-toggle.perso.done { background: #F0F0FF; border-color: #AFA9EC; }
   .ht-check { width: 24px; height: 24px; border-radius: 50%; border: 2px solid #ddd; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 13px; transition: all .15s; }
   .h-toggle.done .ht-check { background: #1D9E75; border-color: #1D9E75; color: white; }
+  .h-toggle.perso.done .ht-check { background: #7F77DD; border-color: #7F77DD; color: white; }
   .ht-name { flex: 1; font-size: 15px; }
   .h-toggle.done .ht-name { color: #0F6E56; }
+  .h-toggle.perso.done .ht-name { color: #3C3489; }
   .ht-badge { font-size: 11px; background: #EEEDFE; color: #534AB7; padding: 2px 7px; border-radius: 99px; }
+  .perso-tag { font-size: 10px; background: #EEEDFE; color: #7F77DD; padding: 2px 6px; border-radius: 99px; }
 
-  /* WAITING */
   .waiting-msg { text-align: center; font-size: 13px; color: #aaa; background: white; border-radius: 12px; padding: 10px; margin-bottom: 10px; }
 
-  /* SECTION TITLE */
-  .sec-title { font-size: 11px; font-weight: 600; color: #aaa; letter-spacing: .06em; text-transform: uppercase; margin-bottom: 8px; }
+  .sec-title { font-size: 11px; font-weight: 600; color: #aaa; letter-spacing: .06em; text-transform: uppercase; margin-bottom: 8px; margin-top: 4px; }
 
-  /* HISTORY */
   .hist-list { display: flex; flex-direction: column; gap: 10px; }
   .hist-day { background: white; border-radius: 16px; padding: 13px 14px; }
   .hist-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; }
   .hist-date { font-size: 13px; font-weight: 600; }
   .win-badge { font-size: 11px; background: #E1F5EE; color: #0F6E56; padding: 2px 8px; border-radius: 99px; }
-  .hist-vs { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .hist-vs { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 8px; }
   .hist-u { font-size: 12px; }
   .hist-uname { color: #888; margin-bottom: 3px; }
   .hist-pct { font-size: 14px; font-weight: 600; }
   .hist-pct.win { color: #1D9E75; }
   .mini-prog { background: #f0f0f0; border-radius: 99px; height: 4px; margin-top: 4px; overflow: hidden; }
   .mini-fill { height: 100%; border-radius: 99px; }
+  .hist-perso { font-size: 11px; color: #aaa; border-top: 1px solid #f0f0f0; padding-top: 7px; margin-top: 2px; }
+  .hist-perso-row { display: flex; gap: 6px; align-items: center; margin-bottom: 3px; }
+  .hist-perso-name { flex: 1; }
+  .perso-pills { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 4px; }
+  .perso-pill { font-size: 11px; padding: 2px 7px; border-radius: 99px; }
+  .perso-pill.done { background: #EEEDFE; color: #534AB7; }
+  .perso-pill.miss { background: #f5f5f5; color: #bbb; text-decoration: line-through; }
 
-  /* MANAGE */
   .manage-list { display: flex; flex-direction: column; gap: 7px; margin-bottom: 10px; }
   .manage-item { display: flex; align-items: center; gap: 10px; padding: 12px 14px; background: white; border-radius: 12px; }
   .manage-name { flex: 1; font-size: 14px; }
   .del-btn { background: none; border: none; cursor: pointer; color: #ccc; font-size: 20px; padding: 2px 5px; border-radius: 6px; line-height: 1; }
   .del-btn:hover { color: #e24b4a; }
-  .add-row { display: flex; gap: 8px; }
+  .add-row { display: flex; gap: 8px; margin-bottom: 1.5rem; }
   .add-input { flex: 1; padding: 11px 13px; border: 1.5px solid #e0e0e0; border-radius: 12px; font-size: 14px; outline: none; }
   .add-input:focus { border-color: #1D9E75; }
-  .add-btn { padding: 11px 16px; background: #1D9E75; color: white; border: none; border-radius: 12px; font-size: 14px; font-weight: 600; cursor: pointer; }
-  .add-btn:hover { background: #0F6E56; }
+  .add-btn { padding: 11px 16px; background: #1D9E75; color: white; border: none; border-radius: 12px; font-size: 14px; font-weight: 600; cursor: pointer; white-space: nowrap; }
+  .add-btn.perso { background: #7F77DD; }
+  .add-btn:hover { opacity: .85; }
 
   .empty { text-align: center; color: #bbb; font-size: 14px; padding: 2rem; }
-  .loading { text-align: center; color: #bbb; font-size: 14px; padding: 2rem; }
   .hidden { display: none !important; }
   .sync-dot { width: 7px; height: 7px; border-radius: 50%; background: #1D9E75; display: inline-block; margin-left: 6px; animation: pulse 1.5s infinite; }
   @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.3} }
@@ -115,7 +115,6 @@
 </head>
 <body>
 
-<!-- LOGIN -->
 <div id="login-wrap" class="login-wrap">
   <div class="login-card">
     <h1>Nos objectifs 💚</h1>
@@ -132,7 +131,6 @@
   </div>
 </div>
 
-<!-- APP -->
 <div id="app-wrap" class="app hidden">
   <div class="topbar">
     <div class="topbar-left">
@@ -149,7 +147,6 @@
     <button class="tab" onclick="showTab('manage')">⚙️ Objectifs</button>
   </div>
 
-  <!-- TODAY -->
   <div id="tab-today">
     <div class="date-nav">
       <button class="nav-btn" onclick="changeDay(-1)">‹</button>
@@ -160,25 +157,30 @@
     <div id="today-content"></div>
   </div>
 
-  <!-- HISTORY -->
   <div id="tab-history" class="hidden">
     <div class="hist-list" id="hist-list"></div>
     <div class="empty hidden" id="hist-empty">Pas encore d'historique.<br>Commencez à cocher !</div>
   </div>
 
-  <!-- MANAGE -->
   <div id="tab-manage" class="hidden">
-    <p class="sec-title">Objectifs communs</p>
-    <div class="manage-list" id="manage-list"></div>
-    <div class="empty hidden" id="manage-empty">Aucun objectif. Ajoutez-en un !</div>
+    <p class="sec-title">Objectifs communs 🤝</p>
+    <div class="manage-list" id="manage-common"></div>
+    <div class="empty hidden" id="manage-common-empty">Aucun objectif commun.</div>
     <div class="add-row">
-      <input class="add-input" id="new-habit" placeholder="Nouvel objectif..." maxlength="50" onkeydown="if(event.key==='Enter')addHabit()" />
-      <button class="add-btn" onclick="addHabit()">+ Ajouter</button>
+      <input class="add-input" id="new-common" placeholder="Objectif commun..." maxlength="50" onkeydown="if(event.key==='Enter')addHabit('common')" />
+      <button class="add-btn" onclick="addHabit('common')">+ Ajouter</button>
+    </div>
+
+    <p class="sec-title">Mes objectifs perso 💜</p>
+    <div class="manage-list" id="manage-perso"></div>
+    <div class="empty hidden" id="manage-perso-empty">Aucun objectif perso.</div>
+    <div class="add-row">
+      <input class="add-input" id="new-perso" placeholder="Mon objectif perso..." maxlength="50" onkeydown="if(event.key==='Enter')addHabit('perso')" />
+      <button class="add-btn perso" onclick="addHabit('perso')">+ Ajouter</button>
     </div>
   </div>
 </div>
 
-<!-- FIREBASE -->
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
 import { getDatabase, ref, set, get, onValue, remove } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js";
@@ -199,17 +201,14 @@ const db = getDatabase(fbApp);
 let me = null;
 let selAvatar = '🧡';
 let dayOffset = 0;
-let sharedData = { habits: [], logs: {} };
-let unsubscribe = null;
+let sharedData = { habits: [], logs: {}, perso: {} };
 
-// AVATAR SELECT
 window.selAv = (el, v) => {
   document.querySelectorAll('.av-btn').forEach(b => b.classList.remove('sel'));
   el.classList.add('sel');
   selAvatar = v;
 };
 
-// LOGIN
 window.doLogin = () => {
   const name = document.getElementById('login-name').value.trim();
   if (!name) { document.getElementById('login-name').focus(); return; }
@@ -220,7 +219,6 @@ window.doLogin = () => {
 
 window.switchUser = () => {
   localStorage.removeItem('couple_habits_me');
-  if (unsubscribe) unsubscribe();
   me = null;
   document.getElementById('app-wrap').classList.add('hidden');
   document.getElementById('login-wrap').classList.remove('hidden');
@@ -233,16 +231,16 @@ function startApp() {
   document.getElementById('top-av').textContent = me.avatar;
   document.getElementById('top-name').textContent = me.name;
 
-  // Écoute temps réel Firebase
   const dataRef = ref(db, 'habits_app');
-  unsubscribe = onValue(dataRef, snap => {
+  onValue(dataRef, snap => {
     const val = snap.val();
     if (val) {
       sharedData = val;
       if (!sharedData.habits) sharedData.habits = [];
       if (!sharedData.logs) sharedData.logs = {};
+      if (!sharedData.perso) sharedData.perso = {};
     } else {
-      sharedData = { habits: ['Boire 1,5L d\'eau', 'Sport 20 min', 'Lire 10 pages'], logs: {} };
+      sharedData = { habits: ['Boire 1,5L d\'eau', 'Sport 20 min', 'Lire 10 pages'], logs: {}, perso: {} };
       set(ref(db, 'habits_app'), sharedData);
     }
     renderCurrent();
@@ -250,27 +248,24 @@ function startApp() {
 }
 
 function renderCurrent() {
-  const active = document.querySelector('.tab.active');
   const tabs = ['today','history','manage'];
-  const idx = [...document.querySelectorAll('.tab')].indexOf(active);
-  const name = tabs[idx] || 'today';
+  const active = [...document.querySelectorAll('.tab')].findIndex(t => t.classList.contains('active'));
+  const name = tabs[active] || 'today';
   if (name === 'today') renderToday();
   if (name === 'history') renderHistory();
   if (name === 'manage') renderManage();
 }
 
-// TABS
 window.showTab = name => {
-  document.getElementById('tab-today').classList.toggle('hidden', name !== 'today');
-  document.getElementById('tab-history').classList.toggle('hidden', name !== 'history');
-  document.getElementById('tab-manage').classList.toggle('hidden', name !== 'manage');
+  ['today','history','manage'].forEach(t => {
+    document.getElementById('tab-'+t).classList.toggle('hidden', t !== name);
+  });
   document.querySelectorAll('.tab').forEach((t,i) => t.classList.toggle('active', ['today','history','manage'][i] === name));
   if (name === 'today') renderToday();
   if (name === 'history') renderHistory();
   if (name === 'manage') renderManage();
 };
 
-// DATE
 window.changeDay = d => {
   if (dayOffset + d > 0) return;
   dayOffset += d;
@@ -293,19 +288,24 @@ function formatDate(key) {
   return d.toLocaleDateString('fr-FR', { weekday:'long', day:'numeric', month:'long' });
 }
 
-// RENDER TODAY
+function safeKey(s) { return s.replace(/[.#$[\]/]/g,'_'); }
+
 function renderToday() {
   const key = dateKey(dayOffset);
   const log = (sharedData.logs && sharedData.logs[key]) || {};
   const habits = sharedData.habits || [];
+  const myPerso = (sharedData.perso && sharedData.perso[me.name]) || [];
   const isToday = dayOffset === 0;
 
   document.getElementById('date-lbl').textContent = formatDate(key);
   document.getElementById('next-btn').disabled = isToday;
 
   const myLog = log[me.name] || {};
-  const myDone = habits.filter(h => myLog[h]).length;
-  const pct = habits.length > 0 ? Math.round(myDone / habits.length * 100) : 0;
+  const myCommonDone = habits.filter(h => myLog['c_'+safeKey(h)]).length;
+  const myPersoDone = myPerso.filter(h => myLog['p_'+safeKey(h)]).length;
+  const totalMine = habits.length + myPerso.length;
+  const totalDone = myCommonDone + myPersoDone;
+  const pct = totalMine > 0 ? Math.round(totalDone / totalMine * 100) : 0;
   document.getElementById('prog-fill').style.width = pct + '%';
 
   const others = Object.keys(log).filter(u => u !== me.name);
@@ -314,59 +314,75 @@ function renderToday() {
 
   let html = '';
 
-  if (habits.length === 0) {
-    html = '<div class="empty">Aucun objectif.<br>Ajoutez-en dans l\'onglet ⚙️ Objectifs</div>';
-    document.getElementById('today-content').innerHTML = html;
-    return;
+  // Comparaison objectifs communs
+  if (habits.length > 0) {
+    if (otherName && otherLog) {
+      const otherCommonDone = habits.filter(h => otherLog['c_'+safeKey(h)]).length;
+      const myPct = habits.length > 0 ? Math.round(myCommonDone / habits.length * 100) : 0;
+      const oPct = habits.length > 0 ? Math.round(otherCommonDone / habits.length * 100) : 0;
+      const myWin = myPct > oPct;
+      const oWin = oPct > myPct;
+      const myRows = habits.map(h => `<div class="h-row"><div class="dot${myLog['c_'+safeKey(h)]?' g':''}"></div>${h}</div>`).join('');
+      const oRows = habits.map(h => `<div class="h-row"><div class="dot${otherLog['c_'+safeKey(h)]?' p':''}"></div>${h}</div>`).join('');
+      html += `<p class="sec-title">Objectifs communs 🤝</p>
+      <div class="compare-grid">
+        <div class="u-card mine">
+          <div class="u-card-head"><div class="u-av">${me.avatar}</div><span class="u-uname">${me.name}</span><span class="u-score${myWin?' win':''}">${myCommonDone}/${habits.length}${myWin?' 🏆':''}</span></div>
+          <div class="u-prog"><div class="u-prog-fill" style="width:${myPct}%;background:#1D9E75"></div></div>
+          <div class="habit-rows">${myRows}</div>
+        </div>
+        <div class="u-card">
+          <div class="u-card-head"><div class="u-av other">👤</div><span class="u-uname">${otherName}</span><span class="u-score${oWin?' win':''}">${otherCommonDone}/${habits.length}${oWin?' 🏆':''}</span></div>
+          <div class="u-prog"><div class="u-prog-fill" style="width:${oPct}%;background:#7F77DD"></div></div>
+          <div class="habit-rows">${oRows}</div>
+        </div>
+      </div>`;
+    } else {
+      html += `<p class="sec-title">Objectifs communs 🤝</p><div class="waiting-msg">En attente que l'autre se connecte… 👀</div>`;
+    }
   }
 
-  // Comparaison
-  if (otherName && otherLog) {
-    const otherDone = habits.filter(h => otherLog[h]).length;
-    const myPct = habits.length > 0 ? Math.round(myDone / habits.length * 100) : 0;
-    const oPct = habits.length > 0 ? Math.round(otherDone / habits.length * 100) : 0;
-    const myWin = myPct > oPct;
-    const oWin = oPct > myPct;
+  // Mes coches communs
+  if (habits.length > 0) {
+    html += `<p class="sec-title">Mes coches communs</p><div class="toggle-list">`;
+    habits.forEach(h => {
+      const k = 'c_'+safeKey(h);
+      const done = !!myLog[k];
+      const otherChecked = otherName && otherLog && otherLog[k];
+      html += `<div class="h-toggle${done?' done':''}" onclick="toggleHabit('${k}')">
+        <div class="ht-check">${done?'✓':''}</div>
+        <span class="ht-name">${h}</span>
+        ${otherChecked?`<span class="ht-badge">✓ ${otherName}</span>`:''}
+      </div>`;
+    });
+    html += '</div>';
+  }
 
-    const myRows = habits.map(h => `<div class="h-row"><div class="dot${myLog[h]?' g':''}"></div>${h}</div>`).join('');
-    const oRows = habits.map(h => `<div class="h-row"><div class="dot${otherLog[h]?' p':''}"></div>${h}</div>`).join('');
-
-    html += `<div class="compare-grid">
-      <div class="u-card mine">
-        <div class="u-card-head"><div class="u-av">${me.avatar}</div><span class="u-uname">${me.name}</span><span class="u-score${myWin?' win':''}">${myDone}/${habits.length}${myWin?' 🏆':''}</span></div>
-        <div class="u-prog"><div class="u-prog-fill" style="width:${myPct}%;background:#1D9E75"></div></div>
-        <div class="habit-rows">${myRows}</div>
-      </div>
-      <div class="u-card">
-        <div class="u-card-head"><div class="u-av other">👤</div><span class="u-uname">${otherName}</span><span class="u-score${oWin?' win':''}">${otherDone}/${habits.length}${oWin?' 🏆':''}</span></div>
-        <div class="u-prog"><div class="u-prog-fill" style="width:${oPct}%;background:#7F77DD"></div></div>
-        <div class="habit-rows">${oRows}</div>
-      </div>
-    </div>`;
+  // Mes objectifs perso
+  html += `<p class="sec-title">Mes objectifs perso 💜</p>`;
+  if (myPerso.length === 0) {
+    html += `<div class="empty" style="padding:1rem">Ajoutez vos objectifs perso dans ⚙️ Objectifs</div>`;
   } else {
-    html += `<div class="waiting-msg">En attente que l'autre se connecte… 👀</div>`;
+    html += `<div class="toggle-list">`;
+    myPerso.forEach(h => {
+      const k = 'p_'+safeKey(h);
+      const done = !!myLog[k];
+      html += `<div class="h-toggle perso${done?' done':''}" onclick="toggleHabit('${k}')">
+        <div class="ht-check">${done?'✓':''}</div>
+        <span class="ht-name">${h}</span>
+        <span class="perso-tag">perso</span>
+      </div>`;
+    });
+    html += '</div>';
   }
 
-  // Mes coches
-  html += `<p class="sec-title">Mes coches — ${pct}% complété</p><div class="toggle-list">`;
-  habits.forEach(h => {
-    const done = !!myLog[h];
-    const otherChecked = otherName && otherLog && otherLog[h];
-    html += `<div class="h-toggle${done?' done':''}" onclick="toggleHabit('${h.replace(/'/g,"\\'")}')">
-      <div class="ht-check">${done ? '✓' : ''}</div>
-      <span class="ht-name">${h}</span>
-      ${otherChecked ? `<span class="ht-badge">✓ ${otherName}</span>` : ''}
-    </div>`;
-  });
-  html += '</div>';
   document.getElementById('today-content').innerHTML = html;
 }
 
-// TOGGLE
-window.toggleHabit = async h => {
+window.toggleHabit = async k => {
   const key = dateKey(dayOffset);
-  const path = `habits_app/logs/${key}/${me.name}/${h.replace(/[.#$[\]]/g,'_')}`;
-  const cur = sharedData.logs?.[key]?.[me.name]?.[h];
+  const path = `habits_app/logs/${key}/${me.name}/${k}`;
+  const cur = sharedData.logs?.[key]?.[me.name]?.[k];
   const dot = document.getElementById('sync-dot');
   dot.style.display = 'inline-block';
   if (cur) await remove(ref(db, path));
@@ -374,14 +390,14 @@ window.toggleHabit = async h => {
   dot.style.display = 'none';
 };
 
-// HISTORY
 function renderHistory() {
   const list = document.getElementById('hist-list');
   const empty = document.getElementById('hist-empty');
   const logs = sharedData.logs || {};
-  const keys = Object.keys(logs).sort((a,b) => b.localeCompare(a)).slice(0, 40);
   const habits = sharedData.habits || [];
-  const realKeys = keys.filter(k => Object.values(logs[k] || {}).some(u => Object.keys(u).length > 0));
+  const perso = sharedData.perso || {};
+  const keys = Object.keys(logs).sort((a,b) => b.localeCompare(a)).slice(0, 40);
+  const realKeys = keys.filter(k => Object.values(logs[k]||{}).some(u => Object.keys(u).length > 0));
 
   if (realKeys.length === 0) { list.innerHTML = ''; empty.classList.remove('hidden'); return; }
   empty.classList.add('hidden');
@@ -390,20 +406,34 @@ function renderHistory() {
     const log = logs[key] || {};
     const users = Object.keys(log);
     let winner = null, winScore = -1;
+
     const blocks = users.map(u => {
       const uLog = log[u] || {};
-      const done = habits.filter(h => uLog[h]).length;
-      const pct = habits.length > 0 ? Math.round(done / habits.length * 100) : 0;
-      if (done > winScore) { winScore = done; winner = u; }
+      const uPerso = perso[u] || [];
+      const commonDone = habits.filter(h => uLog['c_'+safeKey(h)]).length;
+      const persoDone = uPerso.filter(h => uLog['p_'+safeKey(h)]).length;
+      const total = habits.length + uPerso.length;
+      const done = commonDone + persoDone;
+      const pct = total > 0 ? Math.round(done / total * 100) : 0;
+      if (commonDone > winScore) { winScore = commonDone; winner = u; }
       const isMe = u === me.name;
       const fillColor = isMe ? '#1D9E75' : '#7F77DD';
+
+      // perso pills
+      const persoPills = uPerso.map(h => {
+        const d = !!uLog['p_'+safeKey(h)];
+        return `<span class="perso-pill ${d?'done':'miss'}">${h}</span>`;
+      }).join('');
+
       return `<div class="hist-u">
-        <div class="hist-uname">${isMe ? me.avatar : '👤'} ${u}</div>
-        <div class="hist-pct${users.length > 1 && winner === u && winScore > 0 ? ' win':''}">${done}/${habits.length} — ${pct}%</div>
+        <div class="hist-uname">${isMe?me.avatar:'👤'} ${u}</div>
+        <div class="hist-pct">${done}/${total} — ${pct}%</div>
         <div class="mini-prog"><div class="mini-fill" style="width:${pct}%;background:${fillColor}"></div></div>
+        ${persoPills ? `<div class="perso-pills" style="margin-top:5px">${persoPills}</div>` : ''}
       </div>`;
     });
-    const winBadge = users.length > 1 && winner ? `<span class="win-badge">🏆 ${winner}</span>` : '';
+
+    const winBadge = users.length > 1 && winner && winScore > 0 ? `<span class="win-badge">🏆 ${winner}</span>` : '';
     return `<div class="hist-day">
       <div class="hist-head"><span class="hist-date">${formatDate(key)}</span>${winBadge}</div>
       <div class="hist-vs">${blocks.join('')}</div>
@@ -411,45 +441,74 @@ function renderHistory() {
   }).join('');
 }
 
-// MANAGE
 function renderManage() {
-  const list = document.getElementById('manage-list');
-  const empty = document.getElementById('manage-empty');
   const habits = sharedData.habits || [];
-  if (habits.length === 0) { list.innerHTML = ''; empty.classList.remove('hidden'); return; }
-  empty.classList.add('hidden');
-  list.innerHTML = habits.map((h,i) => `
-    <div class="manage-item">
-      <span style="font-size:16px">🎯</span>
-      <span class="manage-name">${h}</span>
-      <button class="del-btn" onclick="deleteHabit(${i})">×</button>
-    </div>`).join('');
+  const myPerso = (sharedData.perso && sharedData.perso[me.name]) || [];
+
+  // Communs
+  const cList = document.getElementById('manage-common');
+  const cEmpty = document.getElementById('manage-common-empty');
+  if (habits.length === 0) { cList.innerHTML = ''; cEmpty.classList.remove('hidden'); }
+  else {
+    cEmpty.classList.add('hidden');
+    cList.innerHTML = habits.map((h,i) => `
+      <div class="manage-item">
+        <span>🤝</span>
+        <span class="manage-name">${h}</span>
+        <button class="del-btn" onclick="deleteHabit('common',${i})">×</button>
+      </div>`).join('');
+  }
+
+  // Perso
+  const pList = document.getElementById('manage-perso');
+  const pEmpty = document.getElementById('manage-perso-empty');
+  if (myPerso.length === 0) { pList.innerHTML = ''; pEmpty.classList.remove('hidden'); }
+  else {
+    pEmpty.classList.add('hidden');
+    pList.innerHTML = myPerso.map((h,i) => `
+      <div class="manage-item">
+        <span>💜</span>
+        <span class="manage-name">${h}</span>
+        <button class="del-btn" onclick="deleteHabit('perso',${i})">×</button>
+      </div>`).join('');
+  }
 }
 
-window.addHabit = async () => {
-  const inp = document.getElementById('new-habit');
+window.addHabit = async type => {
+  const inp = document.getElementById(type === 'common' ? 'new-common' : 'new-perso');
   const v = inp.value.trim();
   if (!v) return;
-  const habits = sharedData.habits || [];
-  if (habits.includes(v)) { inp.select(); return; }
-  habits.push(v);
-  await set(ref(db, 'habits_app/habits'), habits);
+
+  if (type === 'common') {
+    const habits = [...(sharedData.habits || [])];
+    if (habits.includes(v)) { inp.select(); return; }
+    habits.push(v);
+    await set(ref(db, 'habits_app/habits'), habits);
+  } else {
+    const myPerso = [...((sharedData.perso && sharedData.perso[me.name]) || [])];
+    if (myPerso.includes(v)) { inp.select(); return; }
+    myPerso.push(v);
+    await set(ref(db, `habits_app/perso/${me.name}`), myPerso);
+  }
   inp.value = '';
 };
 
-window.deleteHabit = async i => {
-  const habits = [...(sharedData.habits || [])];
-  habits.splice(i, 1);
-  await set(ref(db, 'habits_app/habits'), habits);
+window.deleteHabit = async (type, i) => {
+  if (type === 'common') {
+    const habits = [...(sharedData.habits || [])];
+    habits.splice(i, 1);
+    await set(ref(db, 'habits_app/habits'), habits);
+  } else {
+    const myPerso = [...((sharedData.perso && sharedData.perso[me.name]) || [])];
+    myPerso.splice(i, 1);
+    await set(ref(db, `habits_app/perso/${me.name}`), myPerso);
+  }
 };
 
-// AUTO LOGIN
 const saved = localStorage.getItem('couple_habits_me');
 if (saved) {
-  try {
-    me = JSON.parse(saved);
-    startApp();
-  } catch(e) { localStorage.removeItem('couple_habits_me'); }
+  try { me = JSON.parse(saved); startApp(); }
+  catch(e) { localStorage.removeItem('couple_habits_me'); }
 }
 </script>
 </body>
